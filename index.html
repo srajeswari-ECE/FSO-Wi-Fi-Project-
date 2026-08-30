@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FSO & SD-WAN Network Control Center</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #0f172a; color: #f8fafc; margin: 0; padding: 20px; }
+    h1 { color: #38bdf8; text-align: center; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1000px; margin: 20px auto; }
+    .card { background: #1e293b; border-radius: 8px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+    .status-online { color: #4ade80; font-weight: bold; }
+    .metric { font-size: 1.8rem; font-weight: bold; color: #38bdf8; }
+    button { background: #0284c7; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 10px; }
+    button:hover { background: #0369a1; }
+  </style>
+</head>
+<body>
+  <h1>FSO / SD-WAN Hybrid Link Dashboard</h1>
+  
+  <div class="grid">
+    <div class="card">
+      <h3>Node Status</h3>
+      <p>Host (Tenkasi): <span class="status-online">ONLINE</span></p>
+      <p>Client (Tirunelveli): <span class="status-online">ONLINE</span></p>
+      <p>Active Tunnel: <strong>WireGuard IPsec</strong></p>
+    </div>
+
+    <div class="card">
+      <h3>Optical Link Metrics (FSO)</h3>
+      <p>Distance: <strong>70 km (14 Hops)</strong></p>
+      <p>Bit Error Rate (BER): <span id="ber" class="metric">1e-9</span></p>
+      <p>Weather: <span id="weather">Clear Sky</span></p>
+    </div>
+
+    <div class="card">
+      <h3>Network Performance</h3>
+      <p>Simulated Latency: <span id="latency" class="metric">14 ms</span></p>
+      <p>Bandwidth Share: <strong>50 Mbps</strong></p>
+      <button onclick="simulateFog()">Simulate Atmospheric Fog</button>
+    </div>
+  </div>
+
+  <script>
+    function simulateFog() {
+      document.getElementById('weather').innerText = "Dense Fog";
+      document.getElementById('weather').style.color = "#f87171";
+      document.getElementById('ber').innerText = "3.2e-4";
+      document.getElementById('latency').innerText = "45 ms (Rerouted to Backup IP)";
+    }
+  </script>
+</body>
+</html>
